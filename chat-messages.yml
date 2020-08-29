@@ -1,0 +1,14 @@
+Type: "AWS::DynamoDB::Table"
+Properties:
+  AttributeDefinitions:
+    - AttributeName: ConverstionId
+      AttributeType: S
+    - AttributeName: Timestamp
+      AttributeType: N
+  KeySchema:
+    - AttributeName: ConverstionId
+      KeyType: HASH
+    - AttributeName: Timestamp
+      KeyType: RANGE
+  BillingMode: PAY_PER_REQUEST
+  TableName: chat-messages
