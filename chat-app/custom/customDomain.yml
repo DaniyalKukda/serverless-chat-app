@@ -1,0 +1,6 @@
+
+    domainName: "${self:custom.services.directory.domain}"
+    basePath: ${self:provider.stage}
+    stage: ${self:provider.stage}
+    endPoint: 'regional'
+    createRoute53Record: true

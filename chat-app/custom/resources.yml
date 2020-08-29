@@ -1,0 +1,4 @@
+question:
+  questionRecordTopic: ${self:service}-create-topic-${self:provider.stage}
+  questionRecordTopicARN: arn:aws:sns:${self:provider.region}:${self:custom.account.cloudAccountId}:${self:custom.resources.question.questionRecordTopic}
+  questionDbTable: ${self:service}-db-${self:provider.stage}

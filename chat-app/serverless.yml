@@ -1,0 +1,43 @@
+service: chat-app
+provider:
+  name: aws
+  runtime: nodejs10.x
+  memorySize: 128
+  stage: ${opt:stage, "nodefault"}
+  region: us-east-2
+  profile: default
+
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:*"
+      Resource:
+        - "*"
+    - Effect: "Allow"
+      Action:
+        - "logs:*"
+      Resource:
+        - "*"
+
+functions:
+  getConversations: ${file(configs/getConversations.yml)}
+  getAllConversation: ${file(configs/getAllConversation.yml)}
+  chat: ${file(configs/chat.yml)}
+
+plugins:
+  # - serverless-domain-manager
+  - serverless-prune-plugin
+
+resources:
+  Resources:
+    conversationsTable: ${file(resources/chat-conversations.yml)}
+    messagesTable: ${file(resources/chat-messages.yml)}
+
+custom:
+  account: ${file(custom/account.yml)}
+  resources: ${file(custom/resources.yml)}
+  prune: ${file(custom/prune.yml)}
+
+package:
+  exclude:
+    - .git/**

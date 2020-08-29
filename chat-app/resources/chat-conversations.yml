@@ -1,0 +1,23 @@
+Type: "AWS::DynamoDB::Table"
+Properties:
+  AttributeDefinitions:
+    - AttributeName: ConverstionId
+      AttributeType: S
+    - AttributeName: Username
+      AttributeType: S
+  KeySchema:
+    - AttributeName: ConverstionId
+      KeyType: HASH
+    - AttributeName: Username
+      KeyType: RANGE
+  BillingMode: PAY_PER_REQUEST
+  GlobalSecondaryIndexes:
+    - IndexName: Username-ConverstionId-index
+      KeySchema:
+        - AttributeName: Username
+          KeyType: HASH
+        - AttributeName: ConverstionId
+          KeyType: RANGE
+      Projection:
+        ProjectionType: ALL
+  TableName: chat-conversations

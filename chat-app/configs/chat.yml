@@ -1,0 +1,9 @@
+handler: handler.chatHandler
+events:
+  - http:
+      path: /conversations/{id}
+      method: post
+      cors: true
+      request:
+        schema:
+          application/json: ${file(../models/newMessage.json)}

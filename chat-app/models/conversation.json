@@ -1,0 +1,37 @@
+// get/{id} k lie ha
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "participants": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "last": {
+            "type": "integer",
+            "format": "utc-millisec"
+        },
+        "messages": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "sender": {
+                        "type": "string"
+                    },
+                    "time": {
+                        "type": "integer",
+                        "format": "utc-millisec"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

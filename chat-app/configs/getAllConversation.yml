@@ -1,0 +1,9 @@
+handler: handler.getAllConversations
+events:
+  - http:
+      path: /conversations
+      method: get
+      cors: true
+      request:
+        schema:
+          application/json: ${file(../models/conversationList.json)}
